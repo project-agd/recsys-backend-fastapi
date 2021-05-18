@@ -4,4 +4,3 @@
 ```shell
 $ uvicorn backend.main:app --reload
 ```
-
