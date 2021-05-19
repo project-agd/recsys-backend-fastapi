@@ -2,15 +2,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from backend import env
+from backend.env import get_main_database_mysql_url
 
 engine = create_engine(
-    url=f'{env.MAIN_DATABASE_MYSQL_HOST}/{env.MAIN_DATABASE_MYSQL_DATABASE_NAME}',
+    url=get_main_database_mysql_url(),
     encoding='utf-8',
     echo=True
 )
 
-session_local = sessionmaker(
+SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine

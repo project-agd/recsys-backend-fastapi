@@ -2,7 +2,8 @@ from typing import Optional
 
 from fastapi import FastAPI
 
-from backend import env
+from backend.database.database import SessionLocal
+from backend.database.models.store import Store
 
 app = FastAPI()
 
@@ -10,7 +11,12 @@ app = FastAPI()
 @app.get("/")
 def read_root():
 
-    return {"Hello": "World"}
+    session_local = SessionLocal()
+    session_local.query(Store).all()
+    return {
+        "Hello": "World",
+        "Queries": session_local.query(Store).all()
+    }
 
 
 @app.get("/items/{item_id}")

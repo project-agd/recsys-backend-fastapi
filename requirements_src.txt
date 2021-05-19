@@ -1,2 +1,7 @@
 fastapi
 uvicorn[standard]
+tensorflow
+sqlalchemy
+pymysql
+mysqlclient
+mysql-connector
