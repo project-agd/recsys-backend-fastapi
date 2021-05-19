@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, BigInteger
 
-from backend.database.database import Base
+from backend.db.database import Base
 
 
 class VisitLog(Base):

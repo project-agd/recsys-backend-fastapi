@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, DateTime, Float
 
-from backend.database.database import Base
+from backend.db.database import Base
 
 
 class Store(Base):

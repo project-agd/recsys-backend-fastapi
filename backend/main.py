@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import FastAPI
 
-from backend.service import main
+from backend.services import main
 
 app = FastAPI()
 
