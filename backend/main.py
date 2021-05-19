@@ -8,8 +8,8 @@ app = FastAPI()
 
 
 @app.get("/")
-def index():
-    return main.index()
+async def index():
+    return await main.index()
 
 
 @app.get("/items/{item_id}")
