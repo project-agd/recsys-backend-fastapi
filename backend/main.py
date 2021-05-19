@@ -7,11 +7,11 @@ from backend.services import main
 app = FastAPI()
 
 
-@app.get("/")
+@app.get('/')
 async def index():
     return await main.index()
 
 
-@app.get("/items/{item_id}")
+@app.get('/items/{item_id}')
 def retrieve(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+    return {'item_id': item_id, 'q': q}
