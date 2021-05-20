@@ -1,0 +1,2 @@
+def retrieve():
+    return
