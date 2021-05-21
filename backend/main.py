@@ -5,8 +5,7 @@ from typing import Optional
 from fastapi import FastAPI
 from starlette.responses import Response
 
-from backend.services import main
-from backend.services import store
+from .services import store
 
 
 class PrettyJSONResponse(Response):
@@ -23,11 +22,6 @@ class PrettyJSONResponse(Response):
 
 
 app = FastAPI()
-
-
-@app.get('/', response_class=PrettyJSONResponse)
-async def index():
-    return await main.index()
 
 
 @app.get('/store/{store_id}', response_class=PrettyJSONResponse)
