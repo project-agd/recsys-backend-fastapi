@@ -11,6 +11,6 @@ class VisitLog(Base):
     user_id = Column(String)
     creation_date_time = Column(DateTime)
     update_date_time = Column(DateTime)
-    name = Column(String)
+    # name = Column(String)
     text = Column(String)
     rating = Column(Float)

@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from starlette.responses import Response
 
 from .services import store
+from .services import collaborative_filtering
 
 
 class PrettyJSONResponse(Response):
@@ -32,3 +33,8 @@ def store_retrieve(store_id: str):
 @app.get('/items/{item_id}')
 def retrieve(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
+
+
+@app.get('/users/{user_id}')
+def retrieve(user_id: int):
+    return collaborative_filtering.retrieve(user_id)
