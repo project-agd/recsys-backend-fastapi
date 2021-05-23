@@ -47,7 +47,6 @@ def retrieve_by_store(store_id: str):
 
     similar_categories = list()
     for ss in similar_indexes:
-        print(ss)
         similar_categories.append(int(ss))
 
     return {
