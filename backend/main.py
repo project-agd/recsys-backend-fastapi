@@ -42,11 +42,11 @@ def store_retrieve(store_id: str):
     return store.retrieve(store_id)
 
 
-@app.get('/recommender/users/{user_id}', response_class=PrettyJSONResponse)
+@app.get('/recommender/user/{user_id}', response_class=PrettyJSONResponse)
 def cf_retrieve(user_id: int):
     return collaborative_filtering.retrieve_by_user(user_id)
 
 
-@app.get('/recommender/stores/{store_id}', response_class=PrettyJSONResponse)
+@app.get('/recommender/store/{store_id}', response_class=PrettyJSONResponse)
 def cb_retrieve(store_id: str):
     return content_based_filtering.retrieve_by_store(store_id)
