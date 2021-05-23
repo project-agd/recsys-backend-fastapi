@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 from backend import _get_session
-from backend.db.models.store import StoreStoreCategoryMap, StoreCategory, Store
+from backend.db.models.store import StoreStoreCategoryMap
 
 
 def retrieve_by_store(store_id: str):
