@@ -1,5 +1,3 @@
-from sqlalchemy.orm import Session
-
 from backend import _get_session
 from backend.db.models.store import Store
 from backend.db.models.visit_log import VisitLog
@@ -44,7 +42,7 @@ def retrieve_by_user(user_id: int):
 
     user_data = df_ratings[df_ratings.userId == user_id]
     user_data = user_data.drop(columns=['rating'])
-    user_history= user_data.merge(df_stores, on='storeId')
+    user_history = user_data.merge(df_stores, on='storeId')
     user_history = user_history.sort_values(by='rating', ascending=False)
     recommendations = df_stores[~df_stores['storeId'].isin(user_history['storeId'])]
     recommendations = recommendations.merge(pd.DataFrame(sorted_user_predictions).reset_index(), on='storeId')
@@ -55,7 +53,8 @@ def retrieve_by_user(user_id: int):
 
     return {
         'result': {
-            'userid': user_id,
+            'user_id': user_id,
+            'algorithm': 'cf',
             'recommendations': recommendations,
         }
     }

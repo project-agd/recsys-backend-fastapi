@@ -7,3 +7,5 @@ mysqlclient
 mysql-connector
 scipy
 pandas
+tensorflow_recommenders
+sklearn
