@@ -25,16 +25,11 @@ class PrettyJSONResponse(Response):
 app = FastAPI()
 
 
-@app.get('/store/{store_id}', response_class=PrettyJSONResponse)
+@app.get('/v1/store/{store_id}', response_class=PrettyJSONResponse)
 def store_retrieve(store_id: str):
     return store.retrieve(store_id)
 
 
-@app.get('/items/{item_id}')
-def retrieve(item_id: int, q: Optional[str] = None):
-    return {'item_id': item_id, 'q': q}
-
-
-@app.get('/users/{user_id}')
+@app.get('/v1/users/{user_id}', response_class=PrettyJSONResponse)
 def retrieve(user_id: int):
-    return collaborative_filtering.retrieve(user_id)
+    return collaborative_filtering.retrieve_by_user(user_id)
