@@ -41,7 +41,7 @@ def retrieve_by_store(store_id: str):
     category_cosine_similarity = cosine_similarity(count_vector_categories, count_vector_categories).argsort()[:, ::-1]
     target_store_index = data[data['store_id'] == store_id].index.values
 
-    similar_indexes = category_cosine_similarity[target_store_index, :5].reshape(-1)
+    similar_indexes = category_cosine_similarity[target_store_index, :9].reshape(-1)
     similar_indexes = similar_indexes[similar_indexes != target_store_index]
 
     similar_stores_indexes = list()

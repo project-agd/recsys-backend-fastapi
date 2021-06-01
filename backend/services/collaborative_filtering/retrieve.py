@@ -46,15 +46,20 @@ def retrieve_by_user(user_id: int):
     user_history = user_history.sort_values(by='rating', ascending=False)
     recommendations = df_stores[~df_stores['storeId'].isin(user_history['storeId'])]
     recommendations = recommendations.merge(pd.DataFrame(sorted_user_predictions).reset_index(), on='storeId')
-    recommendations = recommendations.rename(columns={user_row_number: 'Predictions'}).sort_values('Predictions', ascending=False).iloc[:10, :]
+    recommendations = recommendations.rename(columns={user_row_number: 'Predictions'}).sort_values('Predictions', ascending=False).iloc[:9, :]
 
     recommendations = recommendations['storeId']
     recommendations = list(recommendations)
+
+    similar_stores = list()
+    for ss in recommendations:
+        store = session_local.query(Store).filter(Store.id == ss).first()
+        similar_stores.append(store)
 
     return {
         'result': {
             'user_id': user_id,
             'algorithm': 'cf',
-            'recommendations': recommendations,
+            'recommendations': similar_stores,
         }
     }
